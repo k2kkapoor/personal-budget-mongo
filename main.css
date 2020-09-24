@@ -69,7 +69,7 @@ div.hero h2 {
 }
 
 .page-area {
-  max-width: 768px;
+  max-width: 100%;
   display: inline-block;
 }
 
@@ -86,9 +86,15 @@ div.hero h2 {
 .container div.text-box {
   display: inline-block;
   width: 100%;
-  max-width: 340px;
+  max-width: 500px;
   text-align: justify;
-  margin: 20px;
+  margin: 10px;
+}
+
+/*  This is an A11y Change  : This code highlight the text when hovering over it*/
+.text-box :hover {
+  -webkit-transform: scale(1.1);
+  background-color: beige;
 }
 
 @media screen and (min-width: 768px) {
