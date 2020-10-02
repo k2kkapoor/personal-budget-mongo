@@ -1,0 +1,36 @@
+{
+  "myBudget": [
+    {
+      "title": "Eat out",
+      "budget": 60
+    },
+    {
+      "title": "Rent",
+      "budget": 460
+    },
+    {
+      "title": "Groceries",
+      "budget": 110
+    },
+    {
+      "title": "Travel",
+      "budget": 20
+    },
+    {
+      "title": "Games",
+      "budget": 20
+    },
+    {
+      "title": "Digital Ocean",
+      "budget": 10
+    },
+    {
+      "title": "Cellular Network",
+      "budget": 40
+    },
+    {
+      "title": "Stationary",
+      "budget": 10
+    }
+  ]
+}
