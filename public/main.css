@@ -92,10 +92,10 @@ div.hero h2 {
 }
 
 /*  This is an A11y Change  : This code highlight the text when hovering over it*/
-.text-box :hover {
+/* .text-box :hover {
   -webkit-transform: scale(1.1);
   background-color: beige;
-}
+} */
 
 @media screen and (min-width: 768px) {
   .container .div.text-box {
