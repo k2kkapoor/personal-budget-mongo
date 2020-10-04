@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Personal Budget</title>
+
     <!-- This is an SEO Change : meta tag provides information regarding the website -->
     <meta
       name="personal-budget-article"
@@ -13,6 +14,14 @@
     <link rel="stylesheet" href="./reset.css" />
     <link rel="stylesheet" href="./main.css" />
     <script src="./font.js"></script>
+    
+
+    <style type="text/css">
+      .slice text {
+        font-size: 16pt;
+        font-family: Arial;
+      }
+    </style>
   </head>
   <body>
     <!-- This is a Semantic HTML Change : using <nav> tag rather than <div> tag -->
@@ -109,20 +118,16 @@
           </p>
         </div>
 
-        <div class="text-box">
-          <h2>Results</h2>
-          <p>
-            People who stick to a financial plan, budgeting every expense, get
-            out of debt faster! Also, they to live happier lives... since they
-            expend without guilt or fear... because they know it is all good and
-            accounted for.
-          </p>
+        <div class="chart">
+          <h2>ChartJS</h2>
+          <p><canvas id="myChart" width="200" height="200"></canvas></p>
         </div>
+      </div>
 
-        <div class="text-box">
-          <h2>Chart</h2>
-          <p><canvas id="myChart" width="400" height="400"></canvas></p>
-        </div>
+
+      <div>
+        <h2>D3JS Chart</h2>
+        <p><div id="d3jsChart"  width="500" height="400"></div></p>
       </div>
     </main>
 
@@ -143,47 +148,11 @@
       crossorigin="anonymous"
     ></script>
 
-    <script>
-      var dataSource = {
-        datasets: [
-          {
-            data: [],
-            backgroundColor: [
-              "#ffcd56",
-              "#ff6384",
-              "#36a2eb",
-              "#fd6b19",
-              "#FF8A33",
-              "#33BEFF",
-              "#33FF8D",
-              "#3390FF",
-            ],
-          },
-        ],
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 
-        // These labels appear in the legend and in the tooltips when hovering different arcs
-        labels: [],
-      };
+    <!-- Script for creating charts using ChartJS and D3JS -->
+    <script src="./charts.js"></script>
 
-      function createChart() {
-        var ctx = document.getElementById("myChart").getContext("2d");
-        var myDoughnutChart = new Chart(ctx, {
-          type: "doughnut",
-          data: dataSource,
-        });
-      }
-
-      function getBudget() {
-        axios.get("/budget").then(function (res) {
-          console.log(res.data);
-          for (var i = 0; i < res.data.myBudget.length; i++) {
-            dataSource.datasets[0].data[i] = res.data.myBudget[i].budget;
-            dataSource.labels[i] = res.data.myBudget[i].title;
-          }
-          createChart();
-        });
-      }
-      getBudget();
-    </script>
   </body>
 </html>

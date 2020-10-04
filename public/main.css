@@ -91,6 +91,12 @@ div.hero h2 {
   margin: 10px;
 }
 
+.container div.chart {
+  display: inline-block;
+  width: 100%;
+  max-width: 500px;
+}
+
 /*  This is an A11y Change  : This code highlight the text when hovering over it*/
 /* .text-box :hover {
   -webkit-transform: scale(1.1);
