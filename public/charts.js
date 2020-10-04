@@ -101,7 +101,7 @@ function createD3JSChart() {
     .text(function (d, i) {
       return title[i];
     })
-    .style("font-size", 12)
+    .style("font-size", 10)
     .attr("y", 10)
     .attr("x", 11);
 }

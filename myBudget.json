@@ -9,7 +9,7 @@
       "budget": 460
     },
     {
-      "title": "Groceries",
+      "title": "Grocerie",
       "budget": 110
     },
     {
@@ -21,15 +21,15 @@
       "budget": 20
     },
     {
-      "title": "Digital Ocean",
+      "title": "Server",
       "budget": 10
     },
     {
-      "title": "Cellular Network",
+      "title": "Phone",
       "budget": 40
     },
     {
-      "title": "Stationary",
+      "title": "water",
       "budget": 10
     }
   ]
