@@ -107,7 +107,7 @@ function createD3JSChart() {
 }
 
 function getBudget() {
-  axios.get("/budget").then(function (res) {
+  axios.get("http://localhost:3000/budget").then(function (res) {
     //Getting data from myBudget.json
     for (var i = 0; i < res.data.myBudget.length; i++) {
       dataSource.datasets[0].data[i] = res.data.myBudget[i].budget;
