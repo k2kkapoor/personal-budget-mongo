@@ -4,16 +4,7 @@ var dataSource = {
   datasets: [
     {
       data: [],
-      backgroundColor: [
-        "#ffcd56",
-        "#ff6384",
-        "#36a2eb",
-        "#fd6b19",
-        "#FF8A33",
-        "#33BEFF",
-        "#33FF8D",
-        "#3390FF",
-      ],
+      backgroundColor: [],
     },
   ],
 
@@ -24,6 +15,7 @@ var dataSource = {
 //Data for D3JS
 var data = {};
 var title = {};
+var d3Color = {};
 
 function createChartJS() {
   var ctx = document.getElementById("myChart").getContext("2d");
@@ -52,7 +44,7 @@ function createD3JSChart() {
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
   // Color Scheme
-  var color = d3.scaleOrdinal().domain(data).range(d3.schemeSet2);
+  var color = d3.scaleOrdinal(d3Color);
 
   // calculate positioning of parts of the chart
   var pie = d3.pie().value(function (d) {
@@ -69,8 +61,8 @@ function createD3JSChart() {
     .enter()
     .append("path")
     .attr("d", arcGenerator)
-    .attr("fill", function (d) {
-      return color(d.data.key);
+    .attr("fill", function (d,i) {
+      return d3Color[i];
     })
     .attr("stroke", "black")
     .style("stroke-width", "2px")
@@ -93,7 +85,7 @@ function createD3JSChart() {
     .attr("width", 10)
     .attr("height", 10)
     .attr("fill", function (d, i) {
-      return color(i);
+      return d3Color[i];
     });
 
   legendG
@@ -109,14 +101,17 @@ function createD3JSChart() {
 function getBudget() {
   axios.get("http://localhost:3000/budget").then(function (res) {
     //Getting data from myBudget.json
-    for (var i = 0; i < res.data.myBudget.length; i++) {
-      dataSource.datasets[0].data[i] = res.data.myBudget[i].budget;
-      dataSource.labels[i] = res.data.myBudget[i].title;
+    //console.log(res.data);
+    for (var i = 0; i < res.data.length; i++) {
+      dataSource.datasets[0].data[i] = res.data[i].budget;
+      dataSource.labels[i] = res.data[i].title;
+      dataSource.datasets[0].backgroundColor[i] = res.data[i].color;
 
-      data[res.data.myBudget[i].title] = res.data.myBudget[i].budget;
-      title[i] = res.data.myBudget[i].title;
+      data[res.data[i].title] = res.data[i].budget;
+      title[i] = res.data[i].title;
+      d3Color[i] = res.data[i].color;
     }
-
+    console.log(d3Color);
     createChartJS();
     createD3JSChart();
   });
